@@ -1,5 +1,5 @@
 "use client"
-import { addTransaction } from "@/app/actions/addTransaction"
+import { addTransaction } from "../src/app/actions/addTransaction"
 import { currentUser} from "@clerk/nextjs/server"
 import { useRef } from "react"
 import { toast } from "react-toastify"
