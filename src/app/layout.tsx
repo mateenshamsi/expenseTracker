@@ -3,7 +3,8 @@ import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "../../components/Header";
-
+import { ToastContainer,toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 const roboto = Roboto({ weight:'400',subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -27,9 +28,11 @@ export default function RootLayout({
   align-items: center;
   justify-content: center;
 "> 
+        <ToastContainer/>
           <Header/>
           {children}
         </main>
+      
         </body>
     </html>
     </ClerkProvider>

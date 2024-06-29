@@ -1,12 +1,29 @@
-"use client" 
-const AddTransaction = async() => {
+"use client"
+import addTransaction from "@/app/actions/addTransaction"
+import { currentUser} from "@clerk/nextjs/server"
+import { useRef } from "react"
+import { toast } from "react-toastify"
+
+
+const AddTransaction = () => {
+    const formRef=  useRef<HTMLFormElement>(null)  
     const clientAction=async(formData:FormData)=>{
-        console.log(formData.get('text'),formData.get('amount'))
+        const result = await addTransaction(formData) 
+        if(result.error)
+        { 
+           toast.error(result.error)  
+        }    
+
+        else
+        { 
+            toast.success("Added transaction details")
+            formRef.current?.reset() 
+         }
     }
     return (  
         <>
         <h3>Add Transaction</h3>
-            <form action={clientAction}>
+            <form ref={formRef} action={clientAction}>
                 <div className="form-control">
                 <label htmlFor="text">Text<br/> 
                 </label>
