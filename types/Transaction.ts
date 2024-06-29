@@ -1,7 +1,7 @@
 export interface Transaction{ 
-    id:String, 
-    text:String ,
-    amt:number , 
+    id:string, 
+    text:string ,
+    amount:number , 
     userId:string , 
     createdAt:Date 
 }
